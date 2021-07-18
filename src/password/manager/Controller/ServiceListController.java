@@ -30,13 +30,13 @@ public class ServiceListController {
             }
             else {
                 System.out.println(newServiceName);
-                UpdateList();
+                updateList();
                 break;
             }
         } 
     }
     
-    public void UpdateList() {
+    public void updateList() {
         String[] serviceNames = serviceList.getServiceNames();
         controller.getView().setServiceList(serviceNames);
     }

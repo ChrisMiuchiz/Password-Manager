@@ -28,6 +28,14 @@ public class ServiceListModel {
         return true;
     }
     
+    public void removeService(String serviceName) {
+        for (int i = services.size() - 1; i >= 0; i--) {
+            if (services.get(i).getServiceName().equals(serviceName)) {
+                services.remove(i);
+            }
+        }
+    }
+    
     public String[] getServiceNames() {
         int size = services.size();
         String[] result = new String[size];

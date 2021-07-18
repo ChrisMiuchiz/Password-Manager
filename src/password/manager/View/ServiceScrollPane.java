@@ -1,10 +1,11 @@
 package password.manager.View;
 
+import java.util.ArrayList;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 public class ServiceScrollPane extends JScrollPane {
-    private JList list;
+    private JList<String> list;
     public ServiceScrollPane() {
         super();
         list = new JList<>();
@@ -12,6 +13,20 @@ public class ServiceScrollPane extends JScrollPane {
     }
     
     public void setServiceList(String[] serviceNames) {
-        this.setViewportView(new JList<>(serviceNames));
+        list = new JList<>(serviceNames);
+        this.setViewportView(list);
+    }
+    
+    public String[] getSelectedServices() {
+        ArrayList<String> result = new ArrayList<>();
+        
+        for (String s : list.getSelectedValuesList()) {
+            result.add(s);
+        }
+        
+        String[] array = new String[result.size()];
+        result.toArray(array);
+
+        return array;
     }
 }

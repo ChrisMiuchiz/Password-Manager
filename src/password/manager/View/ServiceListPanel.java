@@ -43,11 +43,15 @@ public class ServiceListPanel extends JPanel {
         pane.setServiceList(serviceNames);
     }
     
+    public String[] getSelectedServices() {
+        return pane.getSelectedServices();
+    }
+    
     private void add() {
         controller.addNew();
     }
     
     private void remove() {
-        System.out.println("Bye");
+        controller.removeCurrent();
     }
 }

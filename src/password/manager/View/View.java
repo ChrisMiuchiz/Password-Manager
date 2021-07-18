@@ -26,8 +26,16 @@ public class View {
         new ErrorMessage(message);
     }
     
+    public boolean promptYesNo(String title, String message) {
+        return new YesNoDialog().prompt(title, message);
+    }
+    
     public void setServiceList(String[] serviceNames) {
         this.mainFrame.setServiceList(serviceNames);
+    }
+    
+    public String[] getSelectedServices() {
+        return this.mainFrame.getSelectedServices();
     }
     
     public void showMainFrame() {

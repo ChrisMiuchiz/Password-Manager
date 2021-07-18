@@ -33,4 +33,8 @@ public class MainFrame extends JFrame {
     public void setServiceList(String[] serviceNames) {
         serviceList.setServiceList(serviceNames);
     }
+    
+    public String[] getSelectedServices() {
+        return serviceList.getSelectedServices();
+    }
 }

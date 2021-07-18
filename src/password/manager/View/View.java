@@ -18,6 +18,18 @@ public class View {
         return new MasterPasswordFrame().promptPassword();
     }
     
+    public String promptNewServiceName() {
+        return new NewServiceFrame().promptServiceName();
+    }
+    
+    public void errorMessage(String message) {
+        new ErrorMessage(message);
+    }
+    
+    public void setServiceList(String[] serviceNames) {
+        this.mainFrame.setServiceList(serviceNames);
+    }
+    
     public void showMainFrame() {
         mainFrame.setVisible(true);
     }

@@ -10,4 +10,8 @@ public class ServiceScrollPane extends JScrollPane {
         list = new JList<>();
         this.setViewportView(list);
     }
+    
+    public void setServiceList(String[] serviceNames) {
+        this.setViewportView(new JList<>(serviceNames));
+    }
 }

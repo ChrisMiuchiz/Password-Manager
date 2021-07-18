@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
     }
     
     private void initialize() {
-        serviceList = new ServiceListPanel();
+        serviceList = new ServiceListPanel(controller.getSvcControl());
         serviceList.setPreferredSize(new Dimension(250, 600));
         this.add(serviceList, BorderLayout.WEST);
         
@@ -28,7 +28,9 @@ public class MainFrame extends JFrame {
         this.setSize(900, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        
-        
+    }
+    
+    public void setServiceList(String[] serviceNames) {
+        serviceList.setServiceList(serviceNames);
     }
 }

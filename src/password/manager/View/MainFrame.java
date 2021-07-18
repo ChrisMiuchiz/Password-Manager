@@ -8,6 +8,7 @@ import password.manager.Controller.Controller;
 public class MainFrame extends JFrame {
     private final Controller controller;
     private ServiceListPanel serviceList;
+    private ServiceInfoPanel serviceInfo;
     
     public MainFrame(Controller controller) {
         this.controller = controller;
@@ -18,6 +19,10 @@ public class MainFrame extends JFrame {
         serviceList = new ServiceListPanel();
         serviceList.setPreferredSize(new Dimension(250, 600));
         this.add(serviceList, BorderLayout.WEST);
+        
+        serviceInfo = new ServiceInfoPanel();
+        serviceInfo.setPreferredSize(new Dimension(600, 600));
+        this.add(serviceInfo, BorderLayout.EAST);
         
         this.setTitle("Password Manager");
         this.setSize(900, 600);

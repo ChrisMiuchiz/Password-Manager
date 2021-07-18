@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import password.manager.Controller.ServiceListController;
 
 public class ServiceListModel {
-    private ServiceListController controller;
+    private final ServiceListController controller;
     ArrayList<Service> services;
     public ServiceListModel(ServiceListController controller) {
         this.controller = controller;

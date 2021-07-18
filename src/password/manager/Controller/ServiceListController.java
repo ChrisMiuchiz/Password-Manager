@@ -4,8 +4,8 @@ import password.manager.Model.Service;
 import password.manager.Model.ServiceListModel;
 
 public class ServiceListController {
-    private Controller controller;
-    private ServiceListModel serviceList;
+    private final Controller controller;
+    private final ServiceListModel serviceList;
     public ServiceListController(Controller controller) {
         this.controller = controller;
         this.serviceList = new ServiceListModel(this);

@@ -23,7 +23,7 @@ public class MasterPasswordFrame {
     
     public String promptPassword() {
         JOptionPane.showOptionDialog(
-                null, panel, "The title",
+                null, panel, "Password",
                 JOptionPane.NO_OPTION, 
                 JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);

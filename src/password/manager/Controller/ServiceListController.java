@@ -29,7 +29,6 @@ public class ServiceListController {
                 controller.getView().errorMessage("Service already exists!");
             }
             else {
-                System.out.println(newServiceName);
                 updateList();
                 break;
             }

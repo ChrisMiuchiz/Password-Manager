@@ -12,6 +12,7 @@ import password.manager.Controller.ServiceListController;
 public class ServiceListPanel extends JPanel {
     private final JButton addButton;
     private final JButton removeButton;
+    private final JButton viewButton;
     private final ServiceListController controller;
     private final ServiceScrollPane pane;
     public ServiceListPanel(ServiceListController controller) {
@@ -22,6 +23,7 @@ public class ServiceListPanel extends JPanel {
         
         addButton = new JButton("+");
         removeButton = new JButton("-");
+        viewButton = new JButton("View");
         
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -35,8 +37,15 @@ public class ServiceListPanel extends JPanel {
             }
         });
         
+        viewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                view();
+            }
+        });
+        
         add(addButton);
         add(removeButton);
+        add(viewButton);
     }
     
     public void setServiceList(String[] serviceNames) {
@@ -53,5 +62,9 @@ public class ServiceListPanel extends JPanel {
     
     private void remove() {
         controller.removeCurrent();
+    }
+    
+    private void view() {
+        controller.viewServiceInfo();
     }
 }

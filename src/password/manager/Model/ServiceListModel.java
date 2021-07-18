@@ -46,4 +46,13 @@ public class ServiceListModel {
         
         return result;
     }
+    
+    public Service getServiceByName(String serviceName) {
+        for (Service svc : services) {
+            if (svc.getServiceName().equals(serviceName)) {
+                return svc;
+            }
+        }
+        return null;
+    }
 }

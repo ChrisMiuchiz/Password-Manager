@@ -38,6 +38,10 @@ public class View {
         return this.mainFrame.getSelectedServices();
     }
     
+    public void setInfo(String name, String user, String pass, String notes) {
+        mainFrame.setInfo(name, user, pass, notes);
+    }
+    
     public void showMainFrame() {
         mainFrame.setVisible(true);
     }

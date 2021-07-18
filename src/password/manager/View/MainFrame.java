@@ -37,4 +37,8 @@ public class MainFrame extends JFrame {
     public String[] getSelectedServices() {
         return serviceList.getSelectedServices();
     }
+    
+    public void setInfo(String name, String user, String pass, String notes) {
+        serviceInfo.setInfo(name, user, pass, notes);
+    }
 }

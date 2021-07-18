@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.HashSet;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -55,14 +56,23 @@ public class ServiceInfoPanel extends JPanel {
         
         this.add(saveButton);
         
-        setActive(false);
+        setInfoEditable(false);
     }
     
-    public void setActive(boolean active) {
-        serviceNameField.setEditable(active);
+    public void setInfo(String name, String user, String pass, String notes) {
+        serviceNameField.setText(name);
+        serviceUsernameField.setText(user);
+        servicePasswordField.setText(pass);
+        serviceNotesField.setText(notes);
+        setInfoEditable(true);
+    }
+    
+    public void setInfoEditable(boolean active) {
+        // No plans to allow service name to change
+        serviceNameField.setEditable(false);
         serviceUsernameField.setEditable(active);
         servicePasswordField.setEditable(active);
         serviceNotesField.setEditable(active);
-        serviceNotesField.setBackground(serviceNameField.getBackground());
+        serviceNotesField.setBackground(serviceUsernameField.getBackground());
     }
 }

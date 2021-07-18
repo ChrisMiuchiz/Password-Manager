@@ -59,6 +59,29 @@ public class ServiceListController {
         }
     }
     
+    public void viewServiceInfo() {
+        String[] serviceNames = controller.getView().getSelectedServices();
+        
+        // Nothing to show
+        if (serviceNames.length < 1) {
+            return;
+        }
+        
+        // Use the first selected name by default
+        String serviceName = serviceNames[0];
+        
+        Service service = serviceList.getServiceByName(serviceName);
+        
+        if (service == null) {
+            return;
+        }
+        
+        controller.getView().setInfo(service.getServiceName(), 
+                service.getUserName(), service.getPassword(), 
+                service.getNotes());
+        
+    }
+    
     public void updateList() {
         String[] serviceNames = serviceList.getServiceNames();
         controller.getView().setServiceList(serviceNames);

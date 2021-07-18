@@ -54,5 +54,15 @@ public class ServiceInfoPanel extends JPanel {
         this.add(notesPanel, BorderLayout.SOUTH);
         
         this.add(saveButton);
+        
+        setActive(false);
+    }
+    
+    public void setActive(boolean active) {
+        serviceNameField.setEditable(active);
+        serviceUsernameField.setEditable(active);
+        servicePasswordField.setEditable(active);
+        serviceNotesField.setEditable(active);
+        serviceNotesField.setBackground(serviceNameField.getBackground());
     }
 }

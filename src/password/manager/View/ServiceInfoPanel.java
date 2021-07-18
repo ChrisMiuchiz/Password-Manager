@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-
 public class ServiceInfoPanel extends JPanel {
     private JTextField serviceNameField;
     private JTextField serviceUsernameField;
@@ -48,7 +47,5 @@ public class ServiceInfoPanel extends JPanel {
         
         this.add(credsPanel, BorderLayout.NORTH);
         this.add(notesPanel, BorderLayout.SOUTH);
-        
-        
     }
 }

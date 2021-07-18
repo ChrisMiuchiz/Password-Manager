@@ -79,11 +79,34 @@ public class ServiceListController {
         controller.getView().setInfo(service.getServiceName(), 
                 service.getUserName(), service.getPassword(), 
                 service.getNotes());
-        
     }
     
     public void updateList() {
         String[] serviceNames = serviceList.getServiceNames();
         controller.getView().setServiceList(serviceNames);
+    }
+    
+    public void saveInfo() {
+        String serviceName = controller.getView().getInfoServiceName();
+        
+        if (serviceName.length() < 1) {
+            return;
+        }
+        
+        Service activeService = serviceList.getServiceByName(serviceName);
+        
+        if (activeService == null) {
+            return;
+        }
+        
+        String userName = controller.getView().getInfoUserName();
+        String password = controller.getView().getInfoPassword();
+        String notes = controller.getView().getInfoNotes();
+        
+        activeService.setUserName(userName);
+        activeService.setPassword(password);
+        activeService.setNotes(notes);
+        
+        //TODO: This also must save the vault, but that is not implemented yet
     }
 }

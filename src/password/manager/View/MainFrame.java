@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
         serviceList.setPreferredSize(new Dimension(250, 600));
         this.add(serviceList, BorderLayout.WEST);
         
-        serviceInfo = new ServiceInfoPanel();
+        serviceInfo = new ServiceInfoPanel(this.controller);
         serviceInfo.setPreferredSize(new Dimension(600, 600));
         this.add(serviceInfo, BorderLayout.EAST);
         
@@ -40,5 +40,21 @@ public class MainFrame extends JFrame {
     
     public void setInfo(String name, String user, String pass, String notes) {
         serviceInfo.setInfo(name, user, pass, notes);
+    }
+    
+    public String getInfoServiceName() {
+        return serviceInfo.getInfoServiceName();
+    }
+    
+    public String getInfoUserName() {
+        return serviceInfo.getInfoUserName();
+    }
+    
+    public String getInfoPassword() {
+        return serviceInfo.getInfoPassword();
+    }
+    
+    public String getInfoNotes() {
+        return serviceInfo.getInfoNotes();
     }
 }

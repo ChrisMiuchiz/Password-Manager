@@ -42,6 +42,22 @@ public class View {
         mainFrame.setInfo(name, user, pass, notes);
     }
     
+    public String getInfoServiceName() {
+        return mainFrame.getInfoServiceName();
+    }
+    
+    public String getInfoUserName() {
+        return mainFrame.getInfoUserName();
+    }
+    
+    public String getInfoPassword() {
+        return mainFrame.getInfoPassword();
+    }
+    
+    public String getInfoNotes() {
+        return mainFrame.getInfoNotes();
+    }
+    
     public void showMainFrame() {
         mainFrame.setVisible(true);
     }

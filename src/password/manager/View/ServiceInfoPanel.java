@@ -2,10 +2,10 @@ package password.manager.View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.HashSet;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,18 +13,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import password.manager.Controller.Controller;
 
 public class ServiceInfoPanel extends JPanel {
-    private JTextField serviceNameField;
-    private JTextField serviceUsernameField;
-    private JTextField servicePasswordField;
-    private JTextArea serviceNotesField;
+    private final Controller controller;
     
-    private JPanel notesPanel;
-    private JPanel credsPanel;
+    private final JTextField serviceNameField;
+    private final JTextField serviceUsernameField;
+    private final JTextField servicePasswordField;
+    private final JTextArea serviceNotesField;
+    
+    private final JPanel notesPanel;
+    private final JPanel credsPanel;
     
     JButton saveButton;
-    public ServiceInfoPanel() {
+    public ServiceInfoPanel(Controller controller) {
+        this.controller = controller;
         serviceNameField = new JTextField(15);
         serviceUsernameField = new JTextField(15);
         servicePasswordField = new JTextField(15);
@@ -51,6 +55,12 @@ public class ServiceInfoPanel extends JPanel {
         
         saveButton = new JButton("Save");
         
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveInfo();
+            }
+        });
+        
         this.add(credsPanel, BorderLayout.NORTH);
         this.add(notesPanel, BorderLayout.SOUTH);
         
@@ -74,5 +84,27 @@ public class ServiceInfoPanel extends JPanel {
         servicePasswordField.setEditable(active);
         serviceNotesField.setEditable(active);
         serviceNotesField.setBackground(serviceUsernameField.getBackground());
+        
+        saveButton.setEnabled(active);
+    }
+    
+    public String getInfoServiceName() {
+        return serviceNameField.getText();
+    }
+    
+    public String getInfoUserName() {
+        return serviceUsernameField.getText();
+    }
+    
+    public String getInfoPassword() {
+        return servicePasswordField.getText();
+    }
+    
+    public String getInfoNotes() {
+        return serviceNotesField.getText();
+    }
+    
+    private void saveInfo() {
+        controller.getSvcControl().saveInfo();
     }
 }

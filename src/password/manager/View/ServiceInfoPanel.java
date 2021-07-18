@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -20,6 +21,8 @@ public class ServiceInfoPanel extends JPanel {
     
     private JPanel notesPanel;
     private JPanel credsPanel;
+    
+    JButton saveButton;
     public ServiceInfoPanel() {
         serviceNameField = new JTextField(15);
         serviceUsernameField = new JTextField(15);
@@ -45,7 +48,11 @@ public class ServiceInfoPanel extends JPanel {
         credsPanel.add(new JLabel("Password"));
         credsPanel.add(servicePasswordField);
         
+        saveButton = new JButton("Save");
+        
         this.add(credsPanel, BorderLayout.NORTH);
         this.add(notesPanel, BorderLayout.SOUTH);
+        
+        this.add(saveButton);
     }
 }

@@ -1,5 +1,6 @@
 package password.manager.Controller;
 
+import java.util.ArrayList;
 import password.manager.Model.Service;
 import password.manager.Model.ServiceListModel;
 
@@ -33,6 +34,13 @@ public class ServiceListController {
                 break;
             }
         } 
+    }
+    
+    public void addList(ArrayList<Service> services) {
+        for (Service s : services) {
+            serviceList.addService(s);
+        }
+        updateList();
     }
     
     public void removeCurrent() {
@@ -107,6 +115,6 @@ public class ServiceListController {
         activeService.setPassword(password);
         activeService.setNotes(notes);
         
-        //TODO: This also must save the vault, but that is not implemented yet
+        controller.getStorage().store(serviceList.getServices());
     }
 }

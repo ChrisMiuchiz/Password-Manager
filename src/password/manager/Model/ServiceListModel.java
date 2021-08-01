@@ -5,7 +5,7 @@ import password.manager.Controller.ServiceListController;
 
 public class ServiceListModel {
     private final ServiceListController controller;
-    ArrayList<Service> services;
+    private ArrayList<Service> services;
     public ServiceListModel(ServiceListController controller) {
         this.controller = controller;
         this.services = new ArrayList<>();
@@ -54,5 +54,9 @@ public class ServiceListModel {
             }
         }
         return null;
+    }
+    
+    public ArrayList<Service> getServices() {
+        return services;
     }
 }

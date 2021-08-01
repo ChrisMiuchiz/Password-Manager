@@ -20,18 +20,24 @@ public class Controller {
         
         if (storage.fileExists()) {
             // Get the user's password before allowing them to use the vault
-            String password = view.promptPassword();
-            // TODO: verify password, use it to decrypt vault
-        
-            ArrayList<Service> loadedServices = storage.load();
-        
-            if (loadedServices != null) {
-                svcControl.addList(loadedServices);
+            
+            while (true) {
+                String password = view.promptPassword();
+                storage.setPassword(password);
+                ArrayList<Service> loadedServices = storage.load();
+                
+                if (loadedServices == null) {
+                    view.errorMessage("Could not load vault with this password.");
+                }
+                else {
+                    svcControl.addList(loadedServices);
+                    break;
+                }
             }
         }
         else {
-            System.out.println("File does not exist");
-            // TODO: set initial password
+            String password = view.promptSetPassword();
+            storage.setPassword(password);
         }
         
         view.showMainFrame();

@@ -18,6 +18,10 @@ public class View {
         return new MasterPasswordFrame().promptPassword();
     }
     
+    public String promptSetPassword() {
+        return new SetMasterPasswordFrame().promptPassword();
+    }
+    
     public String promptNewServiceName() {
         return new NewServiceFrame().promptServiceName();
     }

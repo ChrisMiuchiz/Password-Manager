@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
+import org.jasypt.util.text.BasicTextEncryptor;
 
 
 public class Storage {
@@ -35,9 +37,11 @@ public class Storage {
         
         String json;
         try {
-            json = new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8);
+            BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+            textEncryptor.setPassword(password);
+            json = textEncryptor.decrypt(new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8));
         }
-        catch (IOException e) {
+        catch (IOException | EncryptionOperationNotPossibleException e) {
             return null;
         }
         
@@ -67,8 +71,11 @@ public class Storage {
         result += "]}";
  
         try {
+            BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+            textEncryptor.setPassword(password);
+            String encrypted = textEncryptor.encrypt(result);
             Files.write(Paths.get(fileName), 
-                result.getBytes(StandardCharsets.UTF_8)
+                encrypted.getBytes(StandardCharsets.UTF_8)
             );
         }
         catch (IOException e) {

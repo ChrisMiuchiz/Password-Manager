@@ -27,6 +27,7 @@ public class ServiceInfoPanel extends JPanel {
     private final JPanel credsPanel;
     
     JButton saveButton;
+    JButton randomPasswordButton;
     public ServiceInfoPanel(Controller controller) {
         this.controller = controller;
         serviceNameField = new JTextField(15);
@@ -61,10 +62,19 @@ public class ServiceInfoPanel extends JPanel {
             }
         });
         
+        randomPasswordButton = new JButton("Generate password");
+        
+        randomPasswordButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openPassFrame();
+            }
+        });
+        
         this.add(credsPanel, BorderLayout.NORTH);
         this.add(notesPanel, BorderLayout.SOUTH);
         
         this.add(saveButton);
+        this.add(randomPasswordButton);
         
         setInfoEditable(false);
     }
@@ -86,6 +96,7 @@ public class ServiceInfoPanel extends JPanel {
         serviceNotesField.setBackground(serviceUsernameField.getBackground());
         
         saveButton.setEnabled(active);
+        randomPasswordButton.setEnabled(active);
     }
     
     public String getInfoServiceName() {
@@ -106,5 +117,9 @@ public class ServiceInfoPanel extends JPanel {
     
     private void saveInfo() {
         controller.getSvcControl().saveInfo();
+    }
+    
+    private void openPassFrame() {
+        controller.showPassFrame();
     }
 }

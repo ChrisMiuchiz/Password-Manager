@@ -4,10 +4,11 @@ import password.manager.Controller.Controller;
 
 public class View {
     private final MainFrame mainFrame;
+    private final PasswordGeneratorFrame passFrame;
 
     public View(Controller controller) {
-        this.mainFrame = new MainFrame(controller);
-        
+        this.mainFrame = new MainFrame(controller); 
+        this.passFrame = new PasswordGeneratorFrame(controller);
     }
     
     public MainFrame getMainFrame() {
@@ -68,5 +69,13 @@ public class View {
     
     public void hideMainFrame() {
         mainFrame.setVisible(false);
+    }
+    
+    public void showPassFrame() {
+        passFrame.setVisible(true);
+    }
+    
+    public void hidePassFrame() {
+        passFrame.setVisible(false);
     }
 }

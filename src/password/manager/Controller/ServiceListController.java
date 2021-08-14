@@ -41,6 +41,7 @@ public class ServiceListController {
             serviceList.addService(s);
         }
         updateList();
+       
     }
     
     public void removeCurrent() {
